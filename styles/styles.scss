@@ -1,2 +1,48 @@
+@import url("https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  box-sizing: border-box;
+  font-size: 62.5%;
+}
+
+body {
+  font-family: "Rajdhani", sans-serif;
+  line-height: 1.4;
+  min-height: 100vh;
+}
+
+@for $var from 1 to 10 {
+  .ml-#{$var} {
+    margin-left: #{$var}rem;
+  }
+
+  .mr-#{$var} {
+    margin-right: #{$var}rem;
+  }
+
+  .mt-#{$var} {
+    margin-top: #{$var}rem;
+  }
+
+  .mb-#{$var} {
+    margin-bottom: #{$var}rem;
+  }
+}
+
+.font-weight-600 {
+  font-weight: 600;
+}
+
 @import "pages/index.scss";
 @import "pages/product.scss";

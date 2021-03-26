@@ -10,12 +10,27 @@ block eod
 
 block content
   main
-    div Write your content here
-    form(method="POST" action="/product")
-      div
-        span ProxyCrawl Token
-        input(name="token")
-      div
-        span ProxyCrawl url (Example url: https://www.amazon.com/Philips-Norelco-AT830-46-Frustration/dp/B00JITDVD2 )
-        input(name="url")
-      input(type="submit")
+    div(class="spinner")
+      img(src="./assets/img/spinner.svg")
+    header
+      form(method="POST" id="crawlForm")
+
+        label  ProxyCrawl (Token):
+        input(name="token" type="text" class="token" placeholder="Token")
+        
+        label  ProxyCrawl (URL): 
+        //- (Example url: https://www.amazon.com/Philips-Norelco-AT830-46-Frustration/dp/B00JITDVD2 )
+        input(name="url" type="url" class="url" placeholder="Url")
+
+        input(type="submit")
+    div(class="errors hidden")
+
+    div(class="product")
+      div(class="prod-img")
+        img(src="")
+      div(class="prod-details")
+        h2(class="title")
+        h3(class="sub-title")
+        p(class="price font-weight-600")
+        p(class="desc mt-2")
+

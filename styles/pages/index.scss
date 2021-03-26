@@ -1,3 +1,57 @@
 .index {
   // Styles for index page
+
+  main {
+    height: 100vh;
+    width: 100%;
+
+    header {
+      display: flex;
+      justify-content: center;
+      padding: 2rem 0;
+      background-color: rgba(0, 0, 0, 0.2);
+      border-bottom: 2px solid gray;
+
+      form {
+        display: flex;
+        flex: 1;
+        justify-content: center;
+
+        * {
+          line-height: 3rem;
+          padding: 1rem;
+          font-size: 2rem;
+          // border-radius: 0;
+        }
+
+        input {
+          border: 1px solid #000;
+          border: 2px solid #000;
+          transition: all 0.2s linear;
+
+          &:focus {
+            outline: 0;
+            background-color: whitesmoke;
+          }
+        }
+
+        label {
+          font-size: 2.2rem;
+          font-weight: 600;
+        }
+
+        input[name="url"] {
+          flex-basis: 60rem;
+        }
+
+        input[type="submit"] {
+          background-color: #000000;
+          border: none;
+          color: #ffffff;
+          min-width: 14rem;
+          cursor: pointer;
+        }
+      }
+    }
+  }
 }
