@@ -2,7 +2,7 @@
  * Global helpers
  */
 
-global.rootPath = __dirname.replace('/helpers', '');
+global.rootPath = __dirname.replace('\helpers', '');
 
 /**
  * Requires a file from root

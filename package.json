@@ -6,7 +6,7 @@
   "main": "start.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node start.js",
+    "start": "nodemon start.js",
     "dev": "concurrently --kill-others \"npm run dev-start-gulp\" \"npm run dev-start-nodemon\"",
     "dev-start-nodemon": "NODE_ENV=development BLUEBIRD_WARNINGS=0 ./node_modules/nodemon/bin/nodemon.js",
     "dev-start-gulp": "gulp && gulp watch"
