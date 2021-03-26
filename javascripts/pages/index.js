@@ -51,7 +51,6 @@ function checkFields() {
   return false;
 }
 
-
 // form submit
 form.addEventListener('submit', async function (e) {
   e.preventDefault();
@@ -59,3 +58,11 @@ form.addEventListener('submit', async function (e) {
   if (!checkFields()) return;
 
 });
+
+url.addEventListener('input', function (e) {
+  if (url.validity.typeMismatch) {
+    url.setCustomValidity("Please enter valid url!");
+  } else {
+    url.setCustomValidity("");
+  }
+})
