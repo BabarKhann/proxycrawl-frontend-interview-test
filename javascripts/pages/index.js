@@ -57,7 +57,40 @@ form.addEventListener('submit', async function (e) {
 
   if (!checkFields()) return;
 
+  const data = await getData();
+
+  if (data.status !== 200) {
+    let p = document.createElement(`p`);
+    let newError = document.createTextNode(data.message ? data.message : 'Something Wrong! Please try again')
+    p.appendChild(newError);
+
+    errorElm.textContent = '';
+    errorElm.appendChild(p);
+    errorElm.classList.replace('hidden', 'visible');
+
+    return;
+  }
+
+  console.log(data);
 });
+
+// get data
+async function getData() {
+  // show spinner
+  spinner.classList.toggle('show');
+
+  const res = await fetch('/product', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ token: form.token.value, url: url.form.url.value }),
+  });
+
+  // hide spinner
+  spinner.classList.toggle('show');
+  return await res.json();
+}
 
 url.addEventListener('input', function (e) {
   if (url.validity.typeMismatch) {
@@ -65,4 +98,4 @@ url.addEventListener('input', function (e) {
   } else {
     url.setCustomValidity("");
   }
-})
+});

@@ -11,7 +11,11 @@ router.post('/product',
       .get(data.url, { scraper: 'amazon-product-details' })
       .then(response => {
         if (response.statusCode !== 200) {
-          throw new Error('Invalid ProxyCrawl status code: ' + response.statusCode + '\n' + response.body);
+          ctx.error = {
+            message: response.json ? response.json.error : response.body,
+            status: response.statusCode
+          };
+          // ctx.error = new Error('Invalid ProxyCrawl status code: ' + response.statusCode + '\n' + response.body);
         } else {
           ctx.product = JSON.parse(response.body).body;
           console.log('Available product properties: ', ctx.product);
@@ -20,8 +24,9 @@ router.post('/product',
       })
       .catch(err => {
         console.error(err);
-        ctx.error = err;
+        ctx.error = { message: err, status: 404 };
         next();
       });
   },
-  (ctx) => ctx.body = renderTemplate('product', { error: ctx.error, product: ctx.product }));
+  (ctx) => ctx.body = ctx.error ? ctx.error : { product: ctx.product, status: 200 });
+  // (ctx) => ctx.body = renderTemplate('product', { error: ctx.error, product: ctx.product }));
