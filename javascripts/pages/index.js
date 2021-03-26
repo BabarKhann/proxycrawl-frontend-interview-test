@@ -55,6 +55,8 @@ function checkFields() {
 form.addEventListener('submit', async function (e) {
   e.preventDefault();
 
+  product.classList.remove('show');
+
   if (!checkFields()) return;
 
   const data = await getData();
@@ -70,6 +72,10 @@ form.addEventListener('submit', async function (e) {
 
     return;
   }
+
+  const { brand, name, price, mainImage, description } = data.product;
+
+  showData(brand, name, price, mainImage, description);
 
   console.log(data);
 });
@@ -90,6 +96,17 @@ async function getData() {
   // hide spinner
   spinner.classList.toggle('show');
   return await res.json();
+}
+
+function showData(brand, name, price, mainImage, description) {
+
+  prod_img.src = mainImage;
+  prod_title.textContent = brand;
+  prod_subTitle.textContent = name;
+  prod_price.textContent = price;
+  prod_desc.textContent = description;
+
+  product.classList.toggle('show');
 }
 
 url.addEventListener('input', function (e) {
