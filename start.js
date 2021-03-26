@@ -18,7 +18,7 @@ app
     useHTTPS: true,
     trustHostHeader: true
   }))
-  .use(cacheControl({ noCache: true }))
+  // .use(cacheControl({ noCache: true }))
   .use(json())
   .use(conditionalGet())
   .use(etag())
